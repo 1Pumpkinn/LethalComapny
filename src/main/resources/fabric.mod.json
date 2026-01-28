@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "lethalcomapny",
+  "version": "${version}",
+  "name": "LethalComapny",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/lethalcomapny/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "dev.saturn.lethalcomapny.client.LethalcomapnyDataGenerator"
+    ],
+    "client": [
+      "dev.saturn.lethalcomapny.client.LethalcomapnyClient"
+    ],
+    "main": [
+      "dev.saturn.lethalcomapny.Lethalcomapny"
+    ]
+  },
+  "mixins": [
+    "lethalcomapny.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
