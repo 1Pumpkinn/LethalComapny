@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "lethalcomapny",
+  "id": "lethalcompany",
   "version": "${version}",
   "name": "LethalComapny",
   "description": "",
@@ -11,17 +11,17 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "dev.saturn.lethalcomapny.client.LethalcomapnyDataGenerator"
+      "dev.saturn.lethalcomapny.client.LethalCompanyDataGenerator"
     ],
     "client": [
-      "dev.saturn.lethalcomapny.client.LethalcomapnyClient"
+      "dev.saturn.lethalcomapny.client.LethalCompanyClient"
     ],
     "main": [
-      "dev.saturn.lethalcomapny.Lethalcomapny"
+      "dev.saturn.lethalcomapny.LethalCompany"
     ]
   },
   "mixins": [
-    "lethalcomapny.mixins.json"
+    "lethalcompany.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
