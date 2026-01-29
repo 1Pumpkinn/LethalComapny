@@ -120,27 +120,12 @@ public class LethalCompanyClient implements ClientModInitializer {
             }
         }
 
-        final double range = 4.5;
-        Vec3d cameraPos = client.player.getCameraPosVec(1.0f);
-        Vec3d rotationVec = client.player.getRotationVec(1.0f);
-        Vec3d targetPos = cameraPos.add(rotationVec.multiply(range));
+        ItemEntity targetItem = CompanyHudRenderer.lethalcompany$getPickupTarget(client.player);
 
-        EntityHitResult entityHitResult = net.minecraft.entity.projectile.ProjectileUtil.raycast(
-                client.player,
-                cameraPos,
-                targetPos,
-                new Box(cameraPos, targetPos),
-                entity -> !entity.isSpectator() && entity.isCollidable(),
-                range * range
-        );
-
-        if (entityHitResult != null && entityHitResult.getEntity() instanceof ItemEntity) {
-            ItemEntity itemEntity = (ItemEntity) entityHitResult.getEntity();
-            if (itemEntity.getStack().getItem() instanceof ScrapItem) {
-                dev.saturn.lethalcompany.LethalCompany.LOGGER.info("Attempting to pick up item: {}", itemEntity.getStack().getItem().getName().getString());
-                ModNetworking.sendPickupItem(itemEntity.getUuid());
-                return;
-            }
+        if (targetItem != null) {
+            dev.saturn.lethalcompany.LethalCompany.LOGGER.info("Attempting to pick up item: {}", targetItem.getStack().getItem().getName().getString());
+            ModNetworking.sendPickupItem(targetItem.getUuid());
+            return;
         }
 
         client.player.sendMessage(Text.literal("No item in view to pick up"), true);

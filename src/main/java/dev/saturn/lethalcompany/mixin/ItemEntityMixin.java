@@ -27,10 +27,6 @@ public abstract class ItemEntityMixin {
 
     @Inject(method = "onPlayerCollision", at = @At("HEAD"), cancellable = true)
     private void lethalcompany$requireManualPickup(PlayerEntity player, CallbackInfo ci) {
-        ItemEntity self = (ItemEntity) (Object) this;
-        ItemStack stack = self.getStack();
-        if (stack.getItem() instanceof ScrapItem) {
-            ci.cancel();
-        }
+        ci.cancel();
     }
 }
