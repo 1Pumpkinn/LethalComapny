@@ -1,11 +1,16 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "dev.saturn.lethalcomapny.mixin",
+  "package": "dev.saturn.lethalcompany.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "ItemEntityMixin",
+    "PlayerEntityMixin",
+    "PlayerInventoryMixin"
   ],
   "client": [
+    "client.InGameHudMixin",
+    "client.MinecraftClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1

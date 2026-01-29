@@ -2,22 +2,22 @@
   "schemaVersion": 1,
   "id": "lethalcompany",
   "version": "${version}",
-  "name": "LethalComapny",
+  "name": "LethalCompany",
   "description": "",
   "authors": [],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/lethalcomapny/icon.png",
+  "icon": "assets/lethalcompany/icon.png",
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "dev.saturn.lethalcomapny.client.LethalCompanyDataGenerator"
+      "dev.saturn.lethalcompany.datagen.LethalCompanyDataGenerator"
     ],
     "client": [
-      "dev.saturn.lethalcomapny.client.LethalCompanyClient"
+      "dev.saturn.lethalcompany.client.LethalCompanyClient"
     ],
     "main": [
-      "dev.saturn.lethalcomapny.LethalCompany"
+      "dev.saturn.lethalcompany.LethalCompany"
     ]
   },
   "mixins": [
