@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lethalcompany:v_type_engine",
+    "lethalcompany:painting",
+    "lethalcompany:large_axle",
+    "lethalcompany:control_pad"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "category.lethalcompany": "Lethal Company",
+  "item.lethalcompany.company_tablet": "Company Tablet",
+  "item.lethalcompany.control_pad": "Control Pad",
+  "item.lethalcompany.gold_bar": "Gold Bar",
+  "item.lethalcompany.hair_brush": "Hair Brush",
+  "item.lethalcompany.large_axle": "Large Axle",
+  "item.lethalcompany.painting": "Painting",
+  "item.lethalcompany.pill_bottle": "Pill Bottle",
+  "item.lethalcompany.remote": "Remote",
+  "item.lethalcompany.scrap_metal": "Scrap Metal",
+  "item.lethalcompany.soccer_ball": "Soccer Ball",
+  "item.lethalcompany.toy_cube": "Toy Cube",
+  "item.lethalcompany.v_type_engine": "V-Type Engine",
+  "key.lethalcompany.open_company_inventory": "Open Company Inventory",
+  "key.lethalcompany.scan": "Scan",
+  "screen.lethalcompany.company_inventory": "Company Inventory"
+}
