@@ -34,6 +34,7 @@ public class LethalCompanyClient implements ClientModInitializer {
 
         KeyBindingHelper.registerKeyBinding(ModKeybinds.OPEN_COMPANY_INVENTORY);
         KeyBindingHelper.registerKeyBinding(ModKeybinds.SCAN);
+        KeyBindingHelper.registerKeyBinding(ModKeybinds.PICKUP);
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (ModKeybinds.OPEN_COMPANY_INVENTORY.wasPressed()) {
                 if (client.player != null) {
@@ -42,6 +43,9 @@ public class LethalCompanyClient implements ClientModInitializer {
             }
             while (ModKeybinds.SCAN.wasPressed()) {
                 lethalcompany$scan(client);
+            }
+            while (ModKeybinds.PICKUP.wasPressed()) {
+                lethalcompany$pickup(client);
             }
         });
     }
@@ -102,5 +106,43 @@ public class LethalCompanyClient implements ClientModInitializer {
             message = message.append(Text.literal(" (+" + (nearby.size() - 1) + " more)"));
         }
         client.player.sendMessage(message, true);
+    }
+
+    private static void lethalcompany$pickup(MinecraftClient client) {
+        if (client.player == null || client.world == null) {
+            return;
+        }
+
+        for (int i = 0; i < 9; i++) {
+            if (client.player.getInventory().getStack(i).isIn(dev.saturn.lethalcompany.LethalCompany.TWO_HANDED_ITEMS)) {
+                client.player.sendMessage(Text.literal("Drop large item to pick up items"), true);
+                return;
+            }
+        }
+
+        final double range = 4.5;
+        Vec3d cameraPos = client.player.getCameraPosVec(1.0f);
+        Vec3d rotationVec = client.player.getRotationVec(1.0f);
+        Vec3d targetPos = cameraPos.add(rotationVec.multiply(range));
+
+        EntityHitResult entityHitResult = net.minecraft.entity.projectile.ProjectileUtil.raycast(
+                client.player,
+                cameraPos,
+                targetPos,
+                new Box(cameraPos, targetPos),
+                entity -> !entity.isSpectator() && entity.isCollidable(),
+                range * range
+        );
+
+        if (entityHitResult != null && entityHitResult.getEntity() instanceof ItemEntity) {
+            ItemEntity itemEntity = (ItemEntity) entityHitResult.getEntity();
+            if (itemEntity.getStack().getItem() instanceof ScrapItem) {
+                dev.saturn.lethalcompany.LethalCompany.LOGGER.info("Attempting to pick up item: {}", itemEntity.getStack().getItem().getName().getString());
+                ModNetworking.sendPickupItem(itemEntity.getUuid());
+                return;
+            }
+        }
+
+        client.player.sendMessage(Text.literal("No item in view to pick up"), true);
     }
 }

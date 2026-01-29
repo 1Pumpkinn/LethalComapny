@@ -14,6 +14,11 @@ public final class ModKeybinds {
             GLFW.GLFW_KEY_R,
             "category.lethalcompany"
     );
+    public static final KeyBinding PICKUP = new KeyBinding(
+            "key.lethalcompany.pickup",
+            GLFW.GLFW_KEY_E,
+            "category.lethalcompany"
+    );
 
     private ModKeybinds() {
     }
